@@ -138,9 +138,9 @@ function render() {
     ${chapter.html}
     <h3>この章の根拠資料</h3>
     <div class="sources">${links(chapter.refs)}</div>
-    ${renderTraining(chapter.training, 'accreditation', active)}
     <h2>理解確認・応用問題</h2>
     ${chapter.qs.map(renderQuiz).join('')}
+    ${renderTraining(chapter.training, 'accreditation', active)}
     <div class="chapter-footer">
       <button class="reset" onclick="retry()">この章を再挑戦</button>
       <button class="next" onclick="go(${active + 1})">${active + 1 === reviewIndex ? '総合復習へ' : '次の章へ →'}</button>
