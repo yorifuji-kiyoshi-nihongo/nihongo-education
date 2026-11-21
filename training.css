@@ -40,3 +40,49 @@
   padding-block: .35rem;
   cursor: pointer;
 }
+
+.training-hints {
+  margin: .75rem 0;
+  padding: .75rem;
+  border: 1px solid #c5cfda;
+  border-radius: .5rem;
+}
+
+.training-hint-choice {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.training-hint-choice legend {
+  padding: 0;
+  font-weight: 700;
+}
+
+.training-hint-options {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: .9rem;
+}
+
+.training-hint-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.training-hint-options input {
+  margin: 0;
+}
+
+.training-hints ul {
+  margin: .25rem 0 0;
+  padding-inline-start: 1.25rem;
+}
+
+.training-hints li + li {
+  margin-block-start: .35rem;
+}
