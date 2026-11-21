@@ -147,3 +147,16 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.lesson-table-compare th[scope="row"],
+.lesson-table-compare th[scope="col"]:first-child {
+  width: 34%;
+}
+
+@media (max-width: 420px) {
+  .lesson-table-compare th,
+  .lesson-table-compare td {
+    padding: .45rem .35rem;
+    line-height: 1.55;
+  }
+}
