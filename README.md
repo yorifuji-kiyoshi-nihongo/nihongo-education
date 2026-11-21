@@ -16,9 +16,10 @@ ChatGPTのGitHub接続を設定し、対象リポジトリだけにアクセス�
 
 ## 構成と注意
 - index.html: 教材一覧。新教材を追加する際にリンクを追加。
-- reference/index.html: 日本語教育の参照枠（ver1.0）。保存キー ref-full9 は既存互換性のため維持。
-- accreditation/index.html: 認定日本語教育機関（既存版、未採番）。保存キー ninteiProgress。
-- AGENTS.md: AIの作成・更新ルール。既存の認定教材は新しい出題規則に全面準拠するよう改訂したものではない。
+- reference/index.html: 日本語教育の参照枠（ver2.0）。保存キー ref-full9 は既存互換性のため維持。
+- accreditation/index.html: 認定日本語教育機関（既存版、未採番）。旧版の正解済みの章は ninteiProgress、改訂後の4択回答は ninteiQuizAnswers に保存。
+- AGENTS.md: AIの作成・更新ルール。
+- 各教材の chapters.js は章の解説・問題・言語化トレーニングを定義。training.js は両教材で共有する言語化トレーニングの表示処理。
 - CHANGELOG.md: 更新記録。
 
 公開リポジトリおよび通常のPagesは社外からも閲覧できる。秘密情報を登録しない。進捗はブラウザ・オリジン単位で保存されるため、ローカルHTMLでの学習記録は公開サイトに自動移行されない。端末間の同期もない。誤更新時はGitHubの変更履歴を確認して修正またはrevertする。
