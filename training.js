@@ -19,13 +19,36 @@ document.addEventListener('input', event => {
   }
 });
 
-document.addEventListener('change', event => {
-  const radio = event.target;
-  if (!radio.matches('.training-hint-choice input[type="radio"]')) return;
-  const hints = radio.closest('.training-hints');
-  for (const panel of hints.querySelectorAll('[data-hint-level]')) {
-    panel.hidden = panel.dataset.hintLevel !== radio.value;
+function selectHintTab(tab) {
+  const group = tab.closest('.training-hint-tabs');
+  for (const item of group.querySelectorAll('[role="tab"]')) {
+    const selected = item === tab;
+    item.setAttribute('aria-selected', String(selected));
+    item.tabIndex = selected ? 0 : -1;
+    document.getElementById(item.getAttribute('aria-controls')).hidden = !selected;
   }
+}
+
+document.addEventListener('click', event => {
+  const tab = event.target.closest('.training-hint-tabs [role="tab"]');
+  if (tab) selectHintTab(tab);
+});
+
+document.addEventListener('keydown', event => {
+  const tab = event.target.closest('.training-hint-tabs [role="tab"]');
+  if (!tab || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  const tabs = [...tab.parentElement.querySelectorAll('[role="tab"]')];
+  const index = tabs.indexOf(tab);
+  const destination = {
+    ArrowLeft: tabs[(index + tabs.length - 1) % tabs.length],
+    ArrowRight: tabs[(index + 1) % tabs.length],
+    Home: tabs[0],
+    End: tabs.at(-1)
+  }[event.key];
+  if (!destination) return;
+  event.preventDefault();
+  selectHintTab(destination);
+  destination.focus();
 });
 
 function restoreTrainingAnswers(root) {
@@ -63,22 +86,19 @@ function renderTraining(tasks, course, chapterIndex) {
             <textarea id="${id}" rows="4" data-training-key="${key}" aria-describedby="${id}-prompt ${id}-status"></textarea>
             <p class="training-status" id="${id}-status" role="status"></p>
             <div class="training-hints">
-              <fieldset class="training-hint-choice">
-                <legend>課題 ${index + 1} のヒント</legend>
-                <div class="training-hint-options">
-                  ${['Easy', 'Normal', 'Hard'].map(level => `
-                    <label>
-                      <input type="radio" name="${id}-hint" value="${level.toLowerCase()}"
-                        aria-controls="${id}-hint-${level.toLowerCase()}" ${level === 'Normal' ? 'checked' : ''}>
-                      ${level}
-                    </label>
-                  `).join('')}
-                </div>
-              </fieldset>
+              <p class="training-hint-label" id="${id}-hint-label">課題 ${index + 1} のヒント</p>
+              <div class="training-hint-tabs" role="tablist" aria-labelledby="${id}-hint-label">
+                ${['easy', 'normal', 'hard'].map(level => `
+                  <button type="button" role="tab" id="${id}-tab-${level}"
+                    aria-controls="${id}-hint-${level}" aria-selected="${level === 'normal'}"
+                    tabindex="${level === 'normal' ? '0' : '-1'}">${level[0].toUpperCase() + level.slice(1)}</button>
+                `).join('')}
+              </div>
               ${['easy', 'normal', 'hard'].map(level => `
-                <ul id="${id}-hint-${level}" data-hint-level="${level}" ${level === 'normal' ? '' : 'hidden'}>
-                  ${task[level].map(cue => `<li>${cue}</li>`).join('')}
-                </ul>
+                <div id="${id}-hint-${level}" role="tabpanel" aria-labelledby="${id}-tab-${level}"
+                  data-hint-level="${level}" tabindex="0" ${level === 'normal' ? '' : 'hidden'}>
+                  <ul>${task[level].map(cue => `<li>${cue}</li>`).join('')}</ul>
+                </div>
               `).join('')}
             </div>
             <details>

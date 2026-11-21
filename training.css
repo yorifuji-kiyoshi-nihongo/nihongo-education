@@ -48,34 +48,44 @@
   border-radius: .5rem;
 }
 
-.training-hint-choice {
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.training-hint-choice legend {
-  padding: 0;
+.training-hint-label {
+  margin: 0 0 .35rem;
   font-weight: 700;
 }
 
-.training-hint-options {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: .9rem;
+.training-hint-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .25rem;
 }
 
-.training-hint-options label {
-  display: inline-flex;
-  align-items: center;
-  gap: .3rem;
+.training-hint-tabs [role="tab"] {
   min-height: 44px;
+  padding: .35rem .15rem;
+  border: 1px solid #718397;
+  border-block-end: 3px solid transparent;
+  border-radius: .35rem .35rem 0 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
   cursor: pointer;
 }
 
-.training-hint-options input {
-  margin: 0;
+.training-hint-tabs [role="tab"][aria-selected="true"] {
+  background: #dbeef4;
+  border-block-end-color: #145774;
+  color: #145774;
+  font-weight: 700;
+}
+
+.training-hint-tabs [role="tab"]:focus-visible,
+.training-hints [role="tabpanel"]:focus-visible {
+  outline: 2px solid #2457a5;
+  outline-offset: 2px;
+}
+
+.training-hints [role="tabpanel"] {
+  padding-block-start: .45rem;
 }
 
 .training-hints ul {
@@ -85,4 +95,17 @@
 
 .training-hints li + li {
   margin-block-start: .35rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .training-hint-tabs [role="tab"][aria-selected="true"] {
+    background: #2a4260;
+    border-block-end-color: #a0dcf3;
+    color: #e5edf6;
+  }
+
+  .training-hint-tabs [role="tab"]:focus-visible,
+  .training-hints [role="tabpanel"]:focus-visible {
+    outline-color: #a0dcf3;
+  }
 }
