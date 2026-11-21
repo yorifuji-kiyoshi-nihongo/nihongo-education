@@ -1,0 +1,42 @@
+.training-task textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 7rem;
+  margin-top: .25rem;
+  padding: .65rem;
+  resize: vertical;
+  border: 1px solid #718397;
+  border-radius: .5rem;
+  font: inherit;
+  font-size: max(1rem, 16px);
+}
+
+.training-task textarea:focus-visible {
+  outline: 2px solid #2457a5;
+  outline-offset: 2px;
+}
+
+.training-status {
+  min-height: 1.5em;
+  margin: .25rem 0;
+  font-size: .875rem;
+}
+
+.training-task summary {
+  padding-block: .4rem;
+}
+
+.training-checks {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.training-checks label {
+  display: flex;
+  align-items: baseline;
+  gap: .4rem;
+  min-height: 2.75rem;
+  padding-block: .35rem;
+  cursor: pointer;
+}
