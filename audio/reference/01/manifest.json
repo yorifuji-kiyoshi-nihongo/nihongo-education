@@ -1,0 +1,141 @@
+{
+  "course": "reference",
+  "chapter": "01",
+  "sourceHash": "338d468ea13b53374485b0f6a0c2484b3b1bc3fa201a8328bb00b0ea0c3352f4",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "9db0bb2e0fd45503532bad14d89aeef52009a872edd5c694550b2df0fb754269",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "duration": 8.544
+    },
+    {
+      "id": "background",
+      "section": "background",
+      "order": 2,
+      "label": "策定の背景と役割",
+      "targets": [
+        0,
+        1,
+        2
+      ],
+      "hash": "6b551708dbfd3531dfedfa9dffcaa38eab8d60b42cedbad01437cd55d3faf074",
+      "src": "background.mp3",
+      "start": 8.544,
+      "duration": 47.976
+    },
+    {
+      "id": "scope",
+      "section": "scope",
+      "order": 3,
+      "label": "共通化の範囲と試験との対応",
+      "targets": [
+        3
+      ],
+      "hash": "21e22f4aee5642d6cd2b73008cecd2afb31faa2a7f40d132cd88b97cfca45eca",
+      "src": "scope.mp3",
+      "start": 56.52,
+      "duration": 25.776
+    },
+    {
+      "id": "principles-social",
+      "section": "principles",
+      "order": 4,
+      "label": "理念1：学習者を社会的存在として捉える",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "3a2dd8e4248534ae804648bf89a942b667643522b45a97db6cfc7db0855c19bc",
+      "src": "principles-social.mp3",
+      "start": 82.296,
+      "duration": 32.928
+    },
+    {
+      "id": "principles-action",
+      "section": "principles",
+      "order": 5,
+      "label": "理念2：「できること」に注目する",
+      "targets": [
+        6
+      ],
+      "hash": "21cc328b565f8fe1c37fd6100c087bf7262a164e7743462ef0bfcaf8d5e3cef0",
+      "src": "principles-action.mp3",
+      "start": 115.224,
+      "duration": 29.448
+    },
+    {
+      "id": "principles-diversity",
+      "section": "principles",
+      "order": 6,
+      "label": "理念3：多様な日本語使用を尊重する",
+      "targets": [
+        7
+      ],
+      "hash": "2e9140f04d03fbb8d557f4f507823f2a40da6dea914966f59140e49f7c9208ef",
+      "src": "principles-diversity.mp3",
+      "start": 144.672,
+      "duration": 34.128
+    },
+    {
+      "id": "skills-action",
+      "section": "skills-action",
+      "order": 7,
+      "label": "知識と行為の関係",
+      "targets": [
+        8,
+        9,
+        10
+      ],
+      "hash": "36a17738bc120a2bb6a012321927855b4619fa9157f5d6837c7bdc757ea415fa",
+      "src": "skills-action.mp3",
+      "start": 178.8,
+      "duration": 52.296
+    },
+    {
+      "id": "curriculum",
+      "section": "curriculum",
+      "order": 8,
+      "label": "教務主任としての課程改善",
+      "targets": [
+        11,
+        12,
+        13
+      ],
+      "hash": "876cd70c04fe24e80f2dfcdd50ad573a9eb9ba2dc0348089cbd22851302a5386",
+      "src": "curriculum.mp3",
+      "start": 231.096,
+      "duration": 50.568
+    },
+    {
+      "id": "transfer",
+      "section": "transfer",
+      "order": 9,
+      "label": "学習者の引継ぎ",
+      "targets": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "hash": "bb971bd04e15dc08951ef5bb07028cd7f07b5ea8ba5a872931d0ffb36fb2423b",
+      "src": "transfer.mp3",
+      "start": 281.664,
+      "duration": 45.744
+    }
+  ],
+  "duration": 327.408
+}
