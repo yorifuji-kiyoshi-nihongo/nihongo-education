@@ -24,7 +24,11 @@ window.createLessonAudio = function (host) {
   let highlighted = [];
   let active = -1;
   let wantedTime = 0;
-  let loading = false;
+  let objectUrl;
+  let fetchController;
+  let ready = false;
+  let pendingSeek = null;
+  let targets = new Map();
   let revision = 0;
   let lastSaved = -1;
   const badge = document.createElement('span');
@@ -52,22 +56,24 @@ window.createLessonAudio = function (host) {
           <label><input type="checkbox" data-scroll> 読み上げ箇所へ自動スクロール</label>
         </div>
       </details>
+      <p data-current></p>
       <p data-status role="status"></p>
     </section>`;
   const ui = Object.fromEntries(['play', 'stop', 'prev', 'next', 'time', 'seek', 'unit',
-    'jump', 'speed', 'scroll', 'status'].map(name => [name, host.querySelector(`[data-${name}]`)]));
+    'jump', 'speed', 'scroll', 'status', 'current'].map(name => [name, host.querySelector(`[data-${name}]`)]));
   ui.speed.value = speed;
   ui.scroll.checked = autoscroll;
 
-  const position = () => loading ? wantedTime : media.currentTime;
+  const position = () => ready ? media.currentTime : wantedTime;
+  const boundaryTolerance = 0.001;
   const storageId = () => `position:${chapter}`;
   function save(force = false) {
-    if (!manifest) return;
+    if (!manifest || !ready || pendingSeek || media.seeking) return;
     const time = position();
     if (force || Math.floor(time) !== lastSaved) {
       lastSaved = Math.floor(time);
       const unit = manifest.units[unitAt(time)];
-      write(storageId(), { id: unit.id, hash: unit.hash, offset: time - unit.start });
+      write(storageId(), { id: unit.id, hash: unit.hash, offset: Math.max(0, time - unit.start) });
     }
   }
   function clock(seconds) {
@@ -76,7 +82,7 @@ window.createLessonAudio = function (host) {
   }
   function unitAt(time) {
     let index = manifest.units.length - 1;
-    while (index > 0 && manifest.units[index].start > time) index--;
+    while (index > 0 && manifest.units[index].start > time + boundaryTolerance) index--;
     return index;
   }
   function clearHighlight() {
@@ -84,13 +90,20 @@ window.createLessonAudio = function (host) {
     highlighted = [];
     badge.remove();
   }
-  function highlight(scroll) {
+  function mapTargets() {
     clearHighlight();
     const children = root.querySelector('.lesson-explanation')?.children;
-    const unit = manifest.units[active];
-    highlighted = unit.targets.length
-      ? unit.targets.map(index => children?.[index]).filter(Boolean)
-      : Array.from(root.querySelectorAll(':scope > h2:first-child, :scope > .goal'));
+    targets = new Map(manifest.units.map(unit => {
+      const nodes = unit.targets.length
+        ? unit.targets.map(index => children?.[index]).filter(Boolean)
+        : Array.from(root.querySelectorAll(':scope > h2:first-child, :scope > .goal'));
+      nodes.forEach(node => { node.dataset.audioUnit = unit.id; });
+      return [unit.id, nodes];
+    }));
+  }
+  function highlight(scroll) {
+    clearHighlight();
+    highlighted = targets.get(manifest.units[active]?.id) || [];
     const first = highlighted[0];
     if (!first) return;
     highlighted.forEach(node => node.classList.add('lesson-audio-current'));
@@ -106,37 +119,47 @@ window.createLessonAudio = function (host) {
     ui.time.textContent = `${clock(time)} / ${clock(duration)}`;
     ui.seek.setAttribute('aria-valuetext', ui.time.textContent);
     const next = unitAt(time);
-    if (next !== active) {
+    if (ready && !pendingSeek && !media.seeking && next !== active) {
       active = next;
-      ui.unit.value = next;
+      ui.current.textContent = `音声位置：${manifest.units[active].label}`;
+      ui.current.dataset.unitId = manifest.units[active].id;
       highlight(scroll);
     }
-    ui.prev.disabled = next === 0;
-    ui.next.disabled = next === manifest.units.length - 1;
+    ui.play.disabled = !ready;
+    ui.stop.disabled = !ready;
+    ui.seek.disabled = !ready || !media.seekable.length;
+    ui.jump.disabled = ui.seek.disabled;
+    ui.prev.disabled = ui.seek.disabled || next === 0;
+    ui.next.disabled = ui.seek.disabled || next === manifest.units.length - 1;
     ui.play.textContent = media.paused ? (time > 0 && !media.ended ? '再開' : '再生') : '一時停止';
     if (navigator.mediaSession) {
       navigator.mediaSession.playbackState = media.paused ? 'paused' : 'playing';
-      if (duration > 0) navigator.mediaSession.setPositionState?.({
-        duration, position: Math.min(time, duration), playbackRate: speed
-      });
+      if (ready && duration > 0) {
+        try {
+          navigator.mediaSession.setPositionState?.({
+            duration, position: Math.min(time, duration), playbackRate: speed
+          });
+        } catch { /* Media Session support varies by browser. */ }
+      }
     }
   }
   function seek(time, scroll = true) {
-    const duration = Number.isFinite(media.duration) ? media.duration : manifest.duration;
-    wantedTime = Math.min(duration, Math.max(0, time));
-    if (!loading) media.currentTime = wantedTime;
-    refresh(scroll);
-    save(true);
+    if (!ready || !media.seekable.length || !Number.isFinite(time)) return;
+    const target = Math.min(media.duration, Math.max(0, time));
+    if (!media.seeking && Math.abs(media.currentTime - target) <= boundaryTolerance) {
+      refresh();
+      if (scroll && autoscroll) badge.scrollIntoView({ block: 'center' });
+      save(true);
+      return;
+    }
+    pendingSeek = { target, scroll };
+    media.currentTime = target;
   }
-  function play() {
-    if (!manifest) return;
+  function play(resetEnded = true) {
+    if (!ready) return;
     ui.status.textContent = '';
-    if (media.error) {
-      wantedTime = position();
-      loading = true;
-      media.load();
-    } else if (media.ended) seek(0, false);
-    if (autoscroll) badge.scrollIntoView({ block: 'center' });
+    if (resetEnded && media.ended) seek(0, false);
+    if (autoscroll && !pendingSeek) badge.scrollIntoView({ block: 'center' });
     const request = revision;
     media.play().catch(error => {
       if (request === revision && error.name !== 'AbortError') {
@@ -147,7 +170,7 @@ window.createLessonAudio = function (host) {
     });
   }
   function move(delta) {
-    const index = Math.max(0, Math.min(manifest.units.length - 1, active + delta));
+    const index = Math.max(0, Math.min(manifest.units.length - 1, unitAt(pendingSeek?.target ?? position()) + delta));
     seek(manifest.units[index].start);
   }
   function stop() {
@@ -177,8 +200,10 @@ window.createLessonAudio = function (host) {
   ui.prev.onclick = () => move(-1);
   ui.next.onclick = () => move(1);
   ui.jump.onclick = () => {
-    seek(manifest.units[Number(ui.unit.value)].start);
-    play();
+    const unit = manifest.units.find(item => item.id === ui.unit.value);
+    if (!unit || ui.jump.disabled) return;
+    seek(unit.start);
+    play(false);
   };
   ui.seek.oninput = () => seek(Number(ui.seek.value));
   function savePrefs() { write('preferences', { speed, autoscroll }); }
@@ -194,9 +219,33 @@ window.createLessonAudio = function (host) {
     if (autoscroll && !media.paused) badge.scrollIntoView({ block: 'center' });
   };
   media.addEventListener('loadedmetadata', () => {
-    if (!manifest) return;
-    loading = false;
-    seek(wantedTime, false);
+    if (!manifest || media.currentSrc !== objectUrl) return;
+    if (!Number.isFinite(media.duration) || Math.abs(media.duration - manifest.duration) > 0.15) {
+      ui.status.textContent = '音声ファイルと段落情報の再生時間が一致しません。';
+      return;
+    }
+  });
+  media.addEventListener('canplay', () => {
+    if (ready || !manifest || media.currentSrc !== objectUrl ||
+        !Number.isFinite(media.duration) || Math.abs(media.duration - manifest.duration) > 0.15) return;
+    ready = true;
+    if (wantedTime > 0) {
+      const resume = wantedTime;
+      wantedTime = 0;
+      seek(resume, false);
+    }
+    ui.status.textContent = '';
+    refresh();
+  });
+  media.addEventListener('seeked', () => {
+    if (!ready || !pendingSeek || media.seeking) return;
+    const { target, scroll } = pendingSeek;
+    pendingSeek = null;
+    refresh();
+    if (Math.abs(position() - target) > 0.1) {
+      ui.status.textContent = '指定位置へ移動できませんでした。もう一度お試しください。';
+    } else if (scroll && autoscroll) badge.scrollIntoView({ block: 'center' });
+    save(true);
   });
   media.addEventListener('timeupdate', () => { refresh(!media.paused); save(); });
   ['play', 'pause', 'ended'].forEach(event => media.addEventListener(event, () => {
@@ -204,8 +253,11 @@ window.createLessonAudio = function (host) {
     save(true);
   }));
   media.addEventListener('error', () => {
-    if (manifest && media.error) ui.status.textContent =
-      '音声ファイルを取得できません。通信状況を確認して再生し直してください。';
+    if (!manifest || !media.error) return;
+    ready = false;
+    pendingSeek = null;
+    refresh();
+    ui.status.textContent = '音声ファイルを再生できません。ページを再読み込みしてください。';
   });
   window.addEventListener('pagehide', () => save(true));
   document.addEventListener('visibilitychange', () => {
@@ -215,25 +267,35 @@ window.createLessonAudio = function (host) {
   return async function attach(contentRoot, config) {
     root = contentRoot;
     if ((config?.id ?? null) === chapter) {
-      if (manifest) highlight(false);
+      if (manifest) { mapTargets(); highlight(false); }
       return;
     }
     save(true);
     const request = ++revision;
     chapter = config?.id ?? null;
     manifest = null;
+    fetchController?.abort();
+    ready = false;
+    pendingSeek = null;
+    wantedTime = 0;
+    ui.current.textContent = '';
+    delete ui.current.dataset.unitId;
     active = lastSaved = -1;
     media.pause();
     media.removeAttribute('src');
     media.load();
+    if (objectUrl) URL.revokeObjectURL(objectUrl);
+    objectUrl = undefined;
     mediaSession(false);
     clearHighlight();
     host.hidden = true;
     ui.status.textContent = '';
     if (!config) return;
     options = config;
+    fetchController = new AbortController();
+    const { signal } = fetchController;
     try {
-      const response = await fetch(config.manifestUrl);
+      const response = await fetch(config.manifestUrl, { signal });
       if (response.status === 404) return;
       if (!response.ok) throw new Error('manifest');
       const next = await response.json();
@@ -247,28 +309,44 @@ window.createLessonAudio = function (host) {
       }
       if (`${next.course}:${next.chapter}` !== chapter || !next.units?.length
           || !Number.isFinite(next.duration) || next.duration <= 0 || !next.src
-          || next.units.some(unit => !Array.isArray(unit.targets) || !unit.id
-            || !Number.isFinite(unit.start) || unit.start < 0 || unit.start >= next.duration)) {
+          || new Set(next.units.map(unit => unit.id)).size !== next.units.length
+          || next.units.some((unit, i) => !Array.isArray(unit.targets) || !unit.id
+            || !Number.isFinite(unit.start) || !Number.isFinite(unit.duration) || unit.duration <= 0
+            || Math.abs(unit.start - (i ? next.units[i - 1].start + next.units[i - 1].duration : 0)) > 0.03
+            || Math.abs(unit.start + unit.duration - (next.units[i + 1]?.start ?? next.duration)) > 0.15)) {
         throw new Error('invalid manifest');
       }
       manifest = next;
+      mapTargets();
       for (const el of Object.values(ui)) el.disabled = false;
-      ui.unit.replaceChildren(...next.units.map((unit, index) => new Option(unit.label, index)));
+      ui.unit.replaceChildren(...next.units.map(unit => new Option(unit.label, unit.id)));
       const stored = read(storageId());
       const unit = next.units.find(unit => unit.id === stored?.id);
       wantedTime = unit ? unit.start + (unit.hash === stored.hash && Number.isFinite(stored.offset)
         ? Math.max(0, Math.min(stored.offset, unit.duration)) : 0) : 0;
-      loading = true;
-      media.defaultPlaybackRate = media.playbackRate = speed;
-      media.src = new URL(next.src, new URL(config.manifestUrl, document.baseURI)).href;
-      mediaSession(true);
+      ui.unit.value = unit?.id ?? next.units[0].id;
       host.hidden = false;
+      ui.status.textContent = '音源を読み込んでいます。';
       refresh();
+      // The private gateway may not serve byte ranges. A local Blob is seekable
+      // without another request for each segment.
+      const sourceUrl = new URL(next.src, new URL(config.manifestUrl, document.baseURI));
+      const audioResponse = await fetch(sourceUrl, { signal });
+      if (!audioResponse.ok || !/^audio\//i.test(audioResponse.headers.get('content-type') || '')) {
+        throw new Error('audio response');
+      }
+      const bytes = await audioResponse.blob();
+      if (request !== revision) return;
+      objectUrl = URL.createObjectURL(bytes);
+      media.preload = 'auto';
+      media.defaultPlaybackRate = media.playbackRate = speed;
+      media.src = objectUrl;
+      mediaSession(true);
     } catch {
       if (request !== revision) return;
       host.hidden = false;
       for (const [key, el] of Object.entries(ui)) if (key !== 'status') el.disabled = true;
-      ui.status.textContent = '読み上げ情報を読み込めませんでした。ページを再読み込みしてください。';
+      ui.status.textContent = '読み上げ情報または音源を読み込めませんでした。ページを再読み込みしてください。';
     }
   };
 };

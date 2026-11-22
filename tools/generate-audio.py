@@ -167,7 +167,7 @@ def package(config, cache):
             duration = mp3_duration(clip)
             manifest["units"].append(dict(
                 **{k: unit[k] for k in ("id", "section", "order", "label", "targets", "hash")},
-                src=filename, start=round(start, 6), duration=duration))
+                src=filename, start=round(start, 6), end=round(start + duration, 6), duration=duration))
             clips.append(f"file '{filename}'\n")
             start += duration
         playlist = temp / "concat.txt"

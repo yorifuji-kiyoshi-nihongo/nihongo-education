@@ -23,3 +23,16 @@ python3 tools/generate-audio.py --project nihongo-education-tts
 - 通信断や中断で送信状況が不明な場合はAPI処理を止めます。Google Cloud側の実績と停止原因を確認できた場合のみ、`--review-interrupted` を付けて実行し、`REVIEWED` を入力します。予約量は残したまま、通常コマンドで再開できます。台帳やキャッシュを削除して再開すると、過去の送信量を追跡できなくなります。
 - スクリプトの上限はローカルの台帳に基づきます。他の環境・スクリプト・プロジェクトなどからの使用分は別途確認してください。Google Cloud全体の請求を止める設定ではありません。利用実績が分からない場合は生成を中止してください。
 - 参考資料は [Google Cloud の料金表](https://cloud.google.com/text-to-speech/pricing) と [割り当てと上限](https://cloud.google.com/text-to-speech/quotas) です。
+
+## 第1章の見出し修正後に再生成する
+
+最初の生成に使った Cloud Shell と同じ環境で、既存のチェックアウトを更新します。
+
+```bash
+cd ~/nihongo-education-audio
+git pull --ff-only origin feature/chapter-audio
+python3 tools/generate-audio.py --project nihongo-education-tts
+cloudshell download ~/nihongo-reference-01-audio.zip
+```
+
+以前のキャッシュを使うと、修正した5単位だけが生成対象になります。スクリプトが表示する新規件数と文字数（5単位・936文字）を確認してから生成してください。章MP3は9単位を再連結し、各単位の開始・終了時刻を再計算します。台帳は同じ場所に引き継ぎます。
