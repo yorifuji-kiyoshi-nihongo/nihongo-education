@@ -17,10 +17,11 @@
       "order": 1,
       "label": "導入・学習目標",
       "targets": [],
-      "hash": "9db0bb2e0fd45503532bad14d89aeef52009a872edd5c694550b2df0fb754269",
+      "hash": "9f30028a4c42c66f49451bb650e801471975cb38f669735d637664539f94441d",
       "src": "overview.mp3",
       "start": 0.0,
-      "duration": 8.544
+      "end": 9.648,
+      "duration": 9.648
     },
     {
       "id": "background",
@@ -32,10 +33,11 @@
         1,
         2
       ],
-      "hash": "6b551708dbfd3531dfedfa9dffcaa38eab8d60b42cedbad01437cd55d3faf074",
+      "hash": "eaf0bd70211f057f82f4aca108caf616321e803ff1085efd127baa425de3b42a",
       "src": "background.mp3",
-      "start": 8.544,
-      "duration": 47.976
+      "start": 9.648,
+      "end": 57.816,
+      "duration": 48.168
     },
     {
       "id": "scope",
@@ -47,7 +49,8 @@
       ],
       "hash": "21e22f4aee5642d6cd2b73008cecd2afb31faa2a7f40d132cd88b97cfca45eca",
       "src": "scope.mp3",
-      "start": 56.52,
+      "start": 57.816,
+      "end": 83.592,
       "duration": 25.776
     },
     {
@@ -59,10 +62,11 @@
         4,
         5
       ],
-      "hash": "3a2dd8e4248534ae804648bf89a942b667643522b45a97db6cfc7db0855c19bc",
+      "hash": "4437053a48a40b44f4f08d7198edb75b5d15d98f470ac42b1eb77403f4be7f93",
       "src": "principles-social.mp3",
-      "start": 82.296,
-      "duration": 32.928
+      "start": 83.592,
+      "end": 115.8,
+      "duration": 32.208
     },
     {
       "id": "principles-action",
@@ -74,7 +78,8 @@
       ],
       "hash": "21cc328b565f8fe1c37fd6100c087bf7262a164e7743462ef0bfcaf8d5e3cef0",
       "src": "principles-action.mp3",
-      "start": 115.224,
+      "start": 115.8,
+      "end": 145.248,
       "duration": 29.448
     },
     {
@@ -87,7 +92,8 @@
       ],
       "hash": "2e9140f04d03fbb8d557f4f507823f2a40da6dea914966f59140e49f7c9208ef",
       "src": "principles-diversity.mp3",
-      "start": 144.672,
+      "start": 145.248,
+      "end": 179.376,
       "duration": 34.128
     },
     {
@@ -100,10 +106,11 @@
         9,
         10
       ],
-      "hash": "36a17738bc120a2bb6a012321927855b4619fa9157f5d6837c7bdc757ea415fa",
+      "hash": "3c8e1878682966fe2cf10690f2ff1f8e4d5385e15510fb4c64a6223f3107f451",
       "src": "skills-action.mp3",
-      "start": 178.8,
-      "duration": 52.296
+      "start": 179.376,
+      "end": 231.12,
+      "duration": 51.744
     },
     {
       "id": "curriculum",
@@ -115,10 +122,11 @@
         12,
         13
       ],
-      "hash": "876cd70c04fe24e80f2dfcdd50ad573a9eb9ba2dc0348089cbd22851302a5386",
+      "hash": "8d5159a6901971c5040c673813806dc51025927ef4925a109ebb6e2275a801fa",
       "src": "curriculum.mp3",
-      "start": 231.096,
-      "duration": 50.568
+      "start": 231.12,
+      "end": 281.088,
+      "duration": 49.968
     },
     {
       "id": "transfer",
@@ -133,9 +141,10 @@
       ],
       "hash": "bb971bd04e15dc08951ef5bb07028cd7f07b5ea8ba5a872931d0ffb36fb2423b",
       "src": "transfer.mp3",
-      "start": 281.664,
+      "start": 281.088,
+      "end": 326.832,
       "duration": 45.744
     }
   ],
-  "duration": 327.408
+  "duration": 326.832
 }
