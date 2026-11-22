@@ -36,3 +36,19 @@ cloudshell download ~/nihongo-reference-01-audio.zip
 ```
 
 以前のキャッシュを使うと、修正した5単位だけが生成対象になります。スクリプトが表示する新規件数と文字数（5単位・936文字）を確認してから生成してください。章MP3は9単位を再連結し、各単位の開始・終了時刻を再計算します。台帳は同じ場所に引き継ぎます。
+
+## 全16章の計画と生成
+
+教材の各解説を、章導入・見出しと本文・比較表・手順のまとまりで記録しています。原稿に記載した本文直下の位置は教材ハッシュと一緒に照合されます。別枠の資料一覧、問題、解答と練習欄は音源の範囲外です。音源のない章ではプレーヤーは表示されません。
+
+以前のチェックアウトには生成済みファイルが残っている場合があります。以下は新しいディレクトリに取得するため、古いチェックアウトもCloud Shellのホーム内にあるキャッシュ・台帳もそのまま利用できます。
+
+```bash
+git clone --single-branch --branch feature/chapter-audio https://github.com/yorifuji-kiyoshi-nihongo/nihongo-education.git ~/nihongo-education-audio-batch
+cd ~/nihongo-education-audio-batch
+python3 tools/generate-audio.py --project nihongo-education-tts --all --plan
+```
+
+原稿と費用を承認してから生成します。Cloudの当月利用量（スクリプト外の利用を含む）を安全側に見積もり、その数値を `--existing-usage` に指定します。数値が確認できなければ生成しません。`--chapter reference:02 --chapter accreditation:01` のように複数指定できます。`--all` は全16章を対象としますが、承認済み第1章はハッシュが一致する既存MP3を利用します。送信上限を判定する際は最大3回の試行をすべて見込みます。
+
+生成結果は既定で `~/.local/state/nihongo-education-tts/exports/` に章別のZIPとして保存します。Gitのチェックアウトに自動展開しないため、次回のpullで生成物が追跡済みファイルと衝突することを防ぎます。上の試験運用手順は旧版の記録です。現在の生成・出力はこの節の手順を使ってください。

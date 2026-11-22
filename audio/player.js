@@ -96,7 +96,7 @@ window.createLessonAudio = function (host) {
     targets = new Map(manifest.units.map(unit => {
       const nodes = unit.targets.length
         ? unit.targets.map(index => children?.[index]).filter(Boolean)
-        : Array.from(root.querySelectorAll(':scope > h2:first-child, :scope > .goal'));
+        : Array.from(root.querySelectorAll(':scope > h2:first-child, :scope > .goal, :scope > p.note'));
       nodes.forEach(node => { node.dataset.audioUnit = unit.id; });
       return [unit.id, nodes];
     }));
@@ -295,8 +295,9 @@ window.createLessonAudio = function (host) {
     fetchController = new AbortController();
     const { signal } = fetchController;
     try {
-      const response = await fetch(config.manifestUrl, { signal });
+      const response = await fetch(config.manifestUrl, { signal, cache: "no-cache" });
       if (response.status === 404) return;
+      if (response.ok && /^text\/html\b/i.test(response.headers.get("content-type") || "")) return;
       if (!response.ok) throw new Error('manifest');
       const next = await response.json();
       if (request !== revision) return;
@@ -331,7 +332,7 @@ window.createLessonAudio = function (host) {
       // The private gateway may not serve byte ranges. A local Blob is seekable
       // without another request for each segment.
       const sourceUrl = new URL(next.src, new URL(config.manifestUrl, document.baseURI));
-      const audioResponse = await fetch(sourceUrl, { signal });
+      const audioResponse = await fetch(sourceUrl, { signal, cache: "no-cache" });
       if (!audioResponse.ok || !/^audio\//i.test(audioResponse.headers.get('content-type') || '')) {
         throw new Error('audio response');
       }
@@ -348,5 +349,15 @@ window.createLessonAudio = function (host) {
       for (const [key, el] of Object.entries(ui)) if (key !== 'status') el.disabled = true;
       ui.status.textContent = '読み上げ情報または音源を読み込めませんでした。ページを再読み込みしてください。';
     }
+  };
+};
+
+window.lessonAudioChapter = function (course, index, source, album) {
+  const chapter = String(index + 1).padStart(2, '0');
+  return {
+    id: `${course}:${chapter}`,
+    manifestUrl: `../audio/${course}/${chapter}/manifest.json`,
+    source,
+    metadata: { title: `第${index + 1}章 ${source[0]}`, album }
   };
 };
