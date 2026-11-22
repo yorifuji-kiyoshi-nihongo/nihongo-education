@@ -52,3 +52,15 @@ python3 tools/generate-audio.py --project nihongo-education-tts --all --plan
 原稿と費用を承認してから生成します。Cloudの当月利用量（スクリプト外の利用を含む）を安全側に見積もり、その数値を `--existing-usage` に指定します。数値が確認できなければ生成しません。`--chapter reference:02 --chapter accreditation:01` のように複数指定できます。`--all` は全16章を対象としますが、承認済み第1章はハッシュが一致する既存MP3を利用します。送信上限を判定する際は最大3回の試行をすべて見込みます。
 
 生成結果は既定で `~/.local/state/nihongo-education-tts/exports/` に章別のZIPとして保存します。Gitのチェックアウトに自動展開しないため、次回のpullで生成物が追跡済みファイルと衝突することを防ぎます。上の試験運用手順は旧版の記録です。現在の生成・出力はこの節の手順を使ってください。
+
+### 承認済みの第1章と一括ダウンロード
+
+`--all` でも承認済みの参照枠第1章は生成・連結・ZIP出力の対象外です。原稿・音声設定・既存マニフェストが一致することを検査し、実行時は段落別と連結版のMP3をデコードして再生時間も検証します。不一致・欠損・破損がある場合は、第1章を変更せず処理を停止します。
+
+残り15章の生成時は専用の出力フォルダを `--output ~/nihongo-audio-15` で指定できます。生成完了後、Cloud Shellで次を実行すると15本の章別ZIPを一度に取得できます。
+
+```bash
+cd ~/nihongo-audio-15
+zip nihongo-audio-15-chapters.zip nihongo-reference-{02,03,04,05,06,07,08,09,10}-audio.zip nihongo-accreditation-{01,02,03,04,05,06}-audio.zip &&
+  cloudshell download ~/nihongo-audio-15/nihongo-audio-15-chapters.zip
+```

@@ -25,7 +25,6 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT = "nihongo-education-tts"
 STATE = Path.home() / ".local/state/nihongo-education-tts"
 MONTHLY_MAX = 500_000
-PILOT_MAX = 10_000
 FREE_MAX = 1_000_000
 CHAPTERS = {"reference": 10, "accreditation": 6}
 ATTEMPTS = 3
@@ -128,8 +127,7 @@ def synthesize(unit, path, ledger_path, ledger, month, existing_usage, initial_r
         chars = unit["chars"]
         reserved = totals(ledger, month)
         if (reserved + chars > MONTHLY_MAX
-                or existing_usage + reserved - initial_reserved + chars > FREE_MAX
-                or (unit["chapter"] == "reference:01" and pilot_total(ledger) + chars > PILOT_MAX)):
+                or existing_usage + reserved - initial_reserved + chars > FREE_MAX):
             raise RuntimeError("生成上限に達しました。")
         token = run("gcloud", "auth", "print-access-token", "--quiet")
         if not token:
@@ -167,11 +165,6 @@ def synthesize(unit, path, ledger_path, ledger, month, existing_usage, initial_r
         return
 
 
-def pilot_total(ledger):
-    # Entries from the original single-chapter script belong to the pilot.
-    return sum(x["chars"] for x in ledger["charges"] if x.get("chapter", "reference:01") == "reference:01")
-
-
 def published_clips(config):
     folder = ROOT / "audio" / config["course"] / config["chapter"]
     path = folder / "manifest.json"
@@ -182,6 +175,39 @@ def published_clips(config):
         return {}
     return {unit["hash"]: folder / (unit["id"] + ".mp3") for unit in manifest["units"]
             if re.fullmatch(r"[a-z0-9-]+", unit["id"])}
+
+
+def verify_pilot(config, *, decode):
+    folder = ROOT / "audio/reference/01"
+    manifest = json.loads((folder / "manifest.json").read_text())
+    if any(manifest[k] != config[k] for k in ("course", "chapter", "sourceHash", "voice", "audioConfig")):
+        raise ValueError("承認済み第1章の原稿・合成設定が一致しません。")
+    keys = ("id", "section", "order", "label", "targets", "hash")
+    if manifest["src"] != "chapter.mp3" or len(manifest["units"]) != len(config["units"]):
+        raise ValueError("承認済み第1章のマニフェストが不正です。")
+    elapsed = 0
+    for stored, unit in zip(manifest["units"], config["units"]):
+        filename = unit["id"] + ".mp3"
+        if stored["src"] != filename or any(stored[k] != unit[k] for k in keys):
+            raise ValueError("承認済み第1章の読み上げ単位が一致しません。")
+        duration = stored["duration"]
+        end = elapsed + duration
+        if (not math.isfinite(duration) or duration <= 0 or not math.isfinite(stored["start"])
+                or not math.isfinite(stored["end"]) or abs(elapsed - stored["start"]) > 0.001
+                or abs(end - stored["end"]) > 0.001):
+            raise ValueError("承認済み第1章の区間時刻が不正です。")
+        verify_pilot_mp3(folder / filename, duration, decode=decode)
+        elapsed = end
+    if not math.isfinite(manifest["duration"]) or abs(manifest["duration"] - elapsed) > 0.12:
+        raise ValueError("承認済み第1章の連結音声の長さが一致しません。")
+    verify_pilot_mp3(folder / manifest["src"], manifest["duration"], decode=decode)
+
+
+def verify_pilot_mp3(path, expected_duration, *, decode):
+    if not path.is_file() or not path.stat().st_size:
+        raise ValueError(f"承認済み第1章の音声がありません: {path.name}")
+    if decode and abs(mp3_duration(path) - expected_duration) > 0.001:
+        raise ValueError(f"承認済み第1章の音声の長さが一致しません: {path.name}")
 
 
 def package(config, clips_by_hash, output):
@@ -242,6 +268,14 @@ def main():
     if any(key not in choices for key in selected):
         parser.error("章指定は reference:01〜10 または accreditation:01〜06 です。")
     configs = [load_units(course, int(number)) for course, number in (key.split(":") for key in selected)]
+    pilot = next((config for config in configs
+                  if (config["course"], config["chapter"]) == ("reference", "01")), None)
+    configs = [config for config in configs if config is not pilot]
+    if pilot:
+        verify_pilot(pilot, decode=False)
+        count = sum(unit["chars"] for unit in pilot["units"])
+        print(f"reference:01 {pilot['title']} | {len(pilot['units'])}単位 | 原稿{count}文字 | "
+              "新規予定0文字 | 最大0文字 | 承認済みのため生成・再結合・ZIP出力の対象外")
     cache = STATE / "mp3"
     ledger_path = STATE / "usage.json"
     month = timestamp().strftime("%Y-%m")
@@ -250,6 +284,7 @@ def main():
             raise RuntimeError("音声キャッシュに対応する台帳が見つかりません。")
         ledger = read_ledger(ledger_path) if ledger_path.exists() else {"charges": []}
         planned = set()
+        total_pending = 0
         for config in configs:
             available = published_clips(config)
             units = config["units"]
@@ -259,15 +294,21 @@ def main():
                 if key not in planned and not (cache / f"{key}.mp3").is_file() and not available.get(key, cache).is_file():
                     pending_chars += unit["chars"]
                     planned.add(key)
+            total_pending += pending_chars
             print(f"{config['course']}:{config['chapter']} {config['title']} | {len(units)}単位 | "
                   f"原稿{sum(u['chars'] for u in units)}文字 | 新規予定{pending_chars}文字 | "
                   f"最大{pending_chars * ATTEMPTS}文字")
+        print(f"全対象の新規予定: {total_pending:,}文字。再試行込み最大: {total_pending * ATTEMPTS:,}文字。")
         print(f"台帳当月: {totals(ledger, month):,}文字（送信前確保・再試行を含む）。"
               f" 不明な送信: {sum(x['status'] in {'pending', 'uncertain'} for x in ledger['charges'])}件。")
         return
-    for binary in ("gcloud", "ffmpeg", "ffprobe"):
+    for binary in ("ffmpeg", "ffprobe"):
         if not shutil.which(binary):
             raise RuntimeError(f"{binary} が必要です。")
+    if pilot:
+        verify_pilot(pilot, decode=True)
+    if not configs and not args.review_interrupted:
+        return
     os.umask(0o077)
     STATE.mkdir(parents=True, exist_ok=True)
     with (STATE / "lock").open("a") as lock:
@@ -314,13 +355,13 @@ def main():
             if args.existing_usage is None or not 0 <= args.existing_usage <= FREE_MAX:
                 raise RuntimeError("今月の総利用量の上限を確認し、--existing-usage で指定してください。")
             existing = max(args.existing_usage, initial_reserved)
-            pilot = sum(u["chars"] for u in pending.values() if u["chapter"] == "reference:01")
-            if (existing + worst > FREE_MAX or initial_reserved + worst > MONTHLY_MAX
-                    or pilot_total(ledger) + pilot * ATTEMPTS > PILOT_MAX):
+            if (existing + worst > FREE_MAX or initial_reserved + worst > MONTHLY_MAX):
                 raise RuntimeError("再試行込みの最大量が無料枠またはスクリプト上限を超えます。")
             if input("他の利用を含め無料枠を確認した場合は GENERATE を入力: ") != "GENERATE":
                 print("中止しました。")
                 return
+            if not shutil.which("gcloud"):
+                raise RuntimeError("gcloud が必要です。")
             save_ledger(ledger_path, ledger)
             cache.mkdir(exist_ok=True)
             for key, unit in pending.items():
