@@ -19,6 +19,22 @@ document.addEventListener('input', event => {
   }
 });
 
+function clearTrainingAnswer(button) {
+  const field = button.closest('.training-task')?.querySelector('textarea[data-training-key]');
+  if (!field || !confirm('この課題の記述回答をクリアしますか？')) return;
+  const key = field.dataset.trainingKey;
+  const status = document.getElementById(field.id + '-status');
+  try {
+    localStorage.removeItem(key);
+    trainingDrafts.delete(key);
+    field.value = '';
+    status.textContent = '回答をクリアしました';
+  } catch {
+    status.textContent = '回答を削除できませんでした。保存状態を確認してください。';
+  }
+  field.focus();
+}
+
 function selectHintTab(tab) {
   const group = tab.closest('.training-hint-tabs');
   for (const item of group.querySelectorAll('[role="tab"]')) {
@@ -85,6 +101,7 @@ function renderTraining(tasks, course, chapterIndex) {
             <label for="${id}">課題 ${index + 1} の回答</label>
             <textarea id="${id}" rows="4" data-training-key="${key}" aria-describedby="${id}-prompt ${id}-status"></textarea>
             <p class="training-status" id="${id}-status" role="status"></p>
+            ${course === 'accreditation' ? `<button type="button" class="training-clear" onclick="clearTrainingAnswer(this)">この課題の記述回答をクリア</button>` : ''}
             <div class="training-hints">
               <p class="training-hint-label" id="${id}-hint-label">課題 ${index + 1} のヒント</p>
               <div class="training-hint-tabs" role="tablist" aria-labelledby="${id}-hint-label">
