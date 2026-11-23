@@ -1,0 +1,106 @@
+{
+  "course": "accreditation",
+  "chapter": "02",
+  "sourceHash": "e4f0b21a311d040bcfa215c7b4f528aec6d2693cbabb2a8be445451f390f93fc",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "f8ef097b23f08437e70ae0dd21b8062f2a9076c7ad25aa7c84398504247e8c53",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 10.944,
+      "duration": 10.944
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "資料の階層",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "49adcb9e5cf902d961772939c570591e1c6785add9a301bfad64107557229a87",
+      "src": "section-1-1.mp3",
+      "start": 10.944,
+      "end": 55.968,
+      "duration": 45.024
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "認定は「書類がそろえば自動的に通る」ものではない",
+      "targets": [
+        2,
+        3,
+        4
+      ],
+      "hash": "3318259ee9af109778a63acbe7a4e9be3ca0d8a579f64617c4ff2485c7ffa02c",
+      "src": "section-3-3.mp3",
+      "start": 55.968,
+      "end": 95.136,
+      "duration": 39.168
+    },
+    {
+      "id": "section-6-6",
+      "section": "section-6",
+      "order": 4,
+      "label": "ケース",
+      "targets": [
+        5,
+        6
+      ],
+      "hash": "49764997f1596a79ec3524856148b384be66fd4a13e778067bd7d4d2bb7c5286",
+      "src": "section-6-6.mp3",
+      "start": 95.136,
+      "end": 111.0,
+      "duration": 15.864
+    },
+    {
+      "id": "section-8-8",
+      "section": "section-8",
+      "order": 5,
+      "label": "適用される版と事実を照合する",
+      "targets": [
+        7,
+        8,
+        9
+      ],
+      "hash": "48590cdcf3978f1b79f424fbc518c5f95ee7e714e3455ecd96708f075c12ef29",
+      "src": "section-8-8.mp3",
+      "start": 111.0,
+      "end": 155.496,
+      "duration": 44.496
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 6,
+      "label": "書面の提出後に行われる確認",
+      "targets": [
+        10,
+        11,
+        12
+      ],
+      "hash": "6ecafa95299ef0f16b08b59831e257c639891f310ff4a3924bc7b6b103ce3001",
+      "src": "section-11-11.mp3",
+      "start": 155.496,
+      "end": 205.56,
+      "duration": 50.064
+    }
+  ],
+  "duration": 205.56
+}

@@ -1,0 +1,135 @@
+{
+  "course": "reference",
+  "chapter": "02",
+  "sourceHash": "7547a5bc6dc77434a2feb54c7dfa750cbb259c11a52a0b8170ae62548193f96c",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "05635907764387e306f90bb8b4bd7fe7030ed6a3e56d5ab604fed1d7a50ce52b",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 10.896,
+      "duration": 10.896
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "CEFRとは",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "14a8a2079118ebf54a8fcad22fcf62ebe596cbdd3da193cea3df649b5c234541",
+      "src": "section-1-1.mp3",
+      "start": 10.896,
+      "end": 29.76,
+      "duration": 18.864
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "社会的行為者",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "3086a6591d844ac298ad9c9c37fc6688d22f38f1b6f26c76da32bbcfc8d53f2b",
+      "src": "section-3-3.mp3",
+      "start": 29.76,
+      "end": 45.264,
+      "duration": 15.504
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "授業の転換",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "18701e634de1a67fa2124343564e1e92cce2dc4e1f8712f7068c3ddf8abe05e0",
+      "src": "section-5-5.mp3",
+      "start": 45.264,
+      "end": 61.44,
+      "duration": 16.176
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "行動中心アプローチ",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "e6315e1e2b5d9208ce6d7ec7dfea7b1fb7ea765988f335e17b58b24abb87df10",
+      "src": "section-7-7.mp3",
+      "start": 61.44,
+      "end": 84.528,
+      "duration": 23.088
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "課題と練習の区別",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "c11fe182f8022c3ac685ac0f14dac5e7dc0165ac40faf3cc65f2ef90703c2cfb",
+      "src": "section-9-9.mp3",
+      "start": 84.528,
+      "end": 119.064,
+      "duration": 34.536
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 7,
+      "label": "授業設計の具体例",
+      "targets": [
+        10,
+        11,
+        12
+      ],
+      "hash": "507b14736db498d145d04beb70c6f8a4c0055f2f1f6e29834933233dd0a067bc",
+      "src": "section-11-11.mp3",
+      "start": 119.064,
+      "end": 173.16,
+      "duration": 54.096
+    },
+    {
+      "id": "section-14-14",
+      "section": "section-14",
+      "order": 8,
+      "label": "学習目的に合わせた教材選択",
+      "targets": [
+        13,
+        14,
+        15
+      ],
+      "hash": "cf622a85b3725e52afb8acf69f33df478820f1423368502e26e3aedf1353641e",
+      "src": "section-14-14.mp3",
+      "start": 173.16,
+      "end": 196.104,
+      "duration": 22.944
+    }
+  ],
+  "duration": 196.104
+}

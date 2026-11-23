@@ -1,0 +1,122 @@
+{
+  "course": "accreditation",
+  "chapter": "06",
+  "sourceHash": "70a73158780d6cb895dd7482b260e7e4285b275a7a15de4014c6f4f29456fc48",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "8ef5dbbce1db74b44bb13f2f9d00b02ae3684fc0743017cdd1b9768c9a13238b",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 9.024,
+      "duration": 9.024
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "申請準備の進め方",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "31fd12ccb58a134f21c9f746133e680e5456db9a59659669ee7d68953f299b58",
+      "src": "section-1-1.mp3",
+      "start": 9.024,
+      "end": 54.432,
+      "duration": 45.408
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "ケースA：AIによる会話評価を導入したい",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "a049db2bca9ae542ad6d6bbc81fe32c4050449ed50135feb25c38d365ff420f5",
+      "src": "section-3-3.mp3",
+      "start": 54.432,
+      "end": 84.36,
+      "duration": 29.928
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "AI評価の試行で確認すること",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "db4d4675445817057a5070ca68530d88138e74f4ea51226d8ab9cacf2df75bab",
+      "src": "section-5-5.mp3",
+      "start": 84.36,
+      "end": 104.424,
+      "duration": 20.064
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "ケースB：就労課程を新設したい",
+      "targets": [
+        6,
+        7,
+        8
+      ],
+      "hash": "62e6916fa5143d660d47aa655215cd6c6d15dd4c40526ba417319bbbb254f7b6",
+      "src": "section-7-7.mp3",
+      "start": 104.424,
+      "end": 135.408,
+      "duration": 30.984
+    },
+    {
+      "id": "section-10-10",
+      "section": "section-10",
+      "order": 6,
+      "label": "提出前の照合と認定後の担当",
+      "targets": [
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "hash": "b503d00685457434899395ca7f2da306de18f5319ed1798f2ae1b1d40d566ca2",
+      "src": "section-10-10.mp3",
+      "start": 135.408,
+      "end": 201.144,
+      "duration": 65.736
+    },
+    {
+      "id": "section-10-15",
+      "section": "section-10",
+      "order": 7,
+      "label": "提出前の照合と認定後の担当（続き）",
+      "targets": [
+        14,
+        15
+      ],
+      "hash": "6c80aea937df27b082bbca0901e59c7373334fe37711592d38472c286a27029e",
+      "src": "section-10-15.mp3",
+      "start": 201.144,
+      "end": 290.04,
+      "duration": 88.896
+    }
+  ],
+  "duration": 290.04
+}

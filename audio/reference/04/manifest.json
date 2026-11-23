@@ -1,0 +1,134 @@
+{
+  "course": "reference",
+  "chapter": "04",
+  "sourceHash": "fec25e75773120b1a16e2fea28d56e12ce4511ea2c5d78fd2c7a56be1663d2c7",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "134211bfb7850b1233d09f6eab193624595e3b38937a6d536f2c7a31a831fa76",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 9.288,
+      "duration": 9.288
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "受容",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "9b5cb66413701cdaec3cba9b15a833574bbd7ff40cb7e6d929734c8d6ac357fe",
+      "src": "section-1-1.mp3",
+      "start": 9.288,
+      "end": 19.392,
+      "duration": 10.104
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "産出と相互行為",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "788ab607310535eec3da23bf196ec478bb9a2ab342fe62441b3b28605be442e1",
+      "src": "section-3-3.mp3",
+      "start": 19.392,
+      "end": 35.928,
+      "duration": 16.536
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "統合課題",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "6419a3928131401be98d620c74eb7a5464d68aeaacca94e825877bdedbc57998",
+      "src": "section-5-5.mp3",
+      "start": 35.928,
+      "end": 48.912,
+      "duration": 12.984
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "複合的な言語活動",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "74529f58f1f1d0a07ed8d4540a6300f378f3170be89516e904aa740bc5bd827c",
+      "src": "section-7-7.mp3",
+      "start": 48.912,
+      "end": 74.208,
+      "duration": 25.296
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "活動の境界と統合",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "e2222255dd6f1f2cff21c197dd63d7c7617c9197ab605e829c8512f0d3da5ad5",
+      "src": "section-9-9.mp3",
+      "start": 74.208,
+      "end": 98.112,
+      "duration": 23.904
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 7,
+      "label": "評価証拠を分ける",
+      "targets": [
+        10,
+        11
+      ],
+      "hash": "4111baa65c8732dba8e3169d29890e7a3f9851059adc9c9a8eb2b401b14b36d4",
+      "src": "section-11-11.mp3",
+      "start": 98.112,
+      "end": 120.84,
+      "duration": 22.728
+    },
+    {
+      "id": "section-13-13",
+      "section": "section-13",
+      "order": 8,
+      "label": "いつ得た情報かを区別する",
+      "targets": [
+        12,
+        13,
+        14
+      ],
+      "hash": "f35c51f343d9bb0c79baa2beee26ba084346ab5d38b1b345326d47f059fc08dc",
+      "src": "section-13-13.mp3",
+      "start": 120.84,
+      "end": 171.936,
+      "duration": 51.096
+    }
+  ],
+  "duration": 171.936
+}

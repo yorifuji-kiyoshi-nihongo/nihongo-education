@@ -1,0 +1,92 @@
+{
+  "course": "accreditation",
+  "chapter": "03",
+  "sourceHash": "53cf295f867dd3ba24f7a27de258cb0eec6d4e025401b1b937d8b0a91aa718ac",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "825b0bb1ef737d981074d679597387f8dca57ab66124774028a5fa5c174658d7",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 8.304,
+      "duration": 8.304
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "3分野は目的が異なる",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "1b14f1a846d1f18e9b92381c63ab5295fdd19fd2626021a253315ac3b0bf384a",
+      "src": "section-1-1.mp3",
+      "start": 8.304,
+      "end": 51.408,
+      "duration": 43.104
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "日本語教育の参照枠とCan do",
+      "targets": [
+        2,
+        3,
+        4
+      ],
+      "hash": "2d58a4de6b47c56524e90eb94fca1fc1e00b2b845ae6c4dc3dd7866fab38e944",
+      "src": "section-3-3.mp3",
+      "start": 51.408,
+      "end": 86.352,
+      "duration": 34.944
+    },
+    {
+      "id": "section-6-6",
+      "section": "section-6",
+      "order": 4,
+      "label": "評価設計の基本",
+      "targets": [
+        5,
+        6,
+        7
+      ],
+      "hash": "a98e0224aa349192ff9b5579bdb4cac366044ffc3bd0a113defe29e8a1644a19",
+      "src": "section-6-6.mp3",
+      "start": 86.352,
+      "end": 118.368,
+      "duration": 32.016
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 5,
+      "label": "達成の証拠と評価結果の使い方",
+      "targets": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "hash": "9b9d3022a3201223e4f00922f73bde287f19d44705cc48a6399c657da2aa85f9",
+      "src": "section-9-9.mp3",
+      "start": 118.368,
+      "end": 182.424,
+      "duration": 64.056
+    }
+  ],
+  "duration": 182.424
+}

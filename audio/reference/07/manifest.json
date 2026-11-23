@@ -1,0 +1,134 @@
+{
+  "course": "reference",
+  "chapter": "07",
+  "sourceHash": "220c76dddf9e7a0541c3d31ce789bfdcda9966c8881fc69027c9c08b4c4ba03b",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "767e142c98006afa8ec4026f2fb6e9b7fd05b48dd3c3c6951719148ae8ab4852",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 9.384,
+      "duration": 9.384
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "逆向き設計",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "08c41e91190080a09b71445b1ba5f5db6ad6fe89f9d1f33ee85b85b50f2caa7d",
+      "src": "section-1-1.mp3",
+      "start": 9.384,
+      "end": 23.04,
+      "duration": 13.656
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "就労コースの例",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "1d255c1529b7b89d3f2030fd60aa8f82d669f14e1c1a23c69eb8dc0043f11786",
+      "src": "section-3-3.mp3",
+      "start": 23.04,
+      "end": 45.384,
+      "duration": 22.344
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "教材選定",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "e4fa5742fbcfbea194f4012c96d38770e77a4bdbd17992c3f8b2f5f2c0aa9e47",
+      "src": "section-5-5.mp3",
+      "start": 45.384,
+      "end": 61.968,
+      "duration": 16.584
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "目標と評価の対応表",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "c8b36d2fb062b69db2a577dcacccda67162ab77b3d00a59caed49063106f81f5",
+      "src": "section-7-7.mp3",
+      "start": 61.968,
+      "end": 86.976,
+      "duration": 25.008
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "逆向き設計の実務",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "80df9cfc9ee9cb5519065e3ab038ab1edd2acf8bad169ffbcd5754f1de1a66ae",
+      "src": "section-9-9.mp3",
+      "start": 86.976,
+      "end": 115.704,
+      "duration": 28.728
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 7,
+      "label": "課程の点検",
+      "targets": [
+        10,
+        11
+      ],
+      "hash": "8b8cbe5019521a0d3460478c8cf549c3eeb141dff9a4417363d2f3ddfde0d7fa",
+      "src": "section-11-11.mp3",
+      "start": 115.704,
+      "end": 138.408,
+      "duration": 22.704
+    },
+    {
+      "id": "section-13-13",
+      "section": "section-13",
+      "order": 8,
+      "label": "点検後の担当決定",
+      "targets": [
+        12,
+        13,
+        14
+      ],
+      "hash": "2d19cd54e9a088368df2752f0722935d5deff1ea412bdc8e5da451a1c5cc8351",
+      "src": "section-13-13.mp3",
+      "start": 138.408,
+      "end": 185.856,
+      "duration": 47.448
+    }
+  ],
+  "duration": 185.856
+}
