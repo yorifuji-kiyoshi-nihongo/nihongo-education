@@ -1,7 +1,7 @@
 {
   "course": "reference",
   "chapter": "01",
-  "sourceHash": "338d468ea13b53374485b0f6a0c2484b3b1bc3fa201a8328bb00b0ea0c3352f4",
+  "sourceHash": "5e5dafa677eb41f00222a3f252a9a627a39b06f6029eb74aa1f5b37bd0107393",
   "voice": {
     "languageCode": "ja-JP",
     "name": "ja-JP-Chirp3-HD-Aoede"
@@ -19,7 +19,7 @@
       "targets": [],
       "hash": "9f30028a4c42c66f49451bb650e801471975cb38f669735d637664539f94441d",
       "src": "overview.mp3",
-      "start": 0.0,
+      "start": 0,
       "end": 9.648,
       "duration": 9.648
     },
