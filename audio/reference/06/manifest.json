@@ -1,0 +1,135 @@
+{
+  "course": "reference",
+  "chapter": "06",
+  "sourceHash": "1f6530b87442d76349bc588f07b6002694e1176914736524f929305f434c1f1b",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "2c0e5efb5c4d4fedcacc8dcbbaca5c20df7043a61d8308d3d197c717aea42daa",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 7.368,
+      "duration": 7.368
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "評価の目的",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "be7f35bd461c9a488177be779c6a92be9a2cda7e4e9a0691a545949bd060bdd0",
+      "src": "section-1-1.mp3",
+      "start": 7.368,
+      "end": 24.864,
+      "duration": 17.496
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "評価の質",
+      "targets": [
+        2,
+        3,
+        4
+      ],
+      "hash": "9210225c37adc98ee73ed23779639ce8bef975165981baa7c6411327a2ecdc8f",
+      "src": "section-3-3.mp3",
+      "start": 24.864,
+      "end": 81.72,
+      "duration": 56.856
+    },
+    {
+      "id": "section-6-6",
+      "section": "section-6",
+      "order": 4,
+      "label": "ルーブリック例",
+      "targets": [
+        5,
+        6
+      ],
+      "hash": "df6346dedfad0e9e4b6158a68d1b1b5d6cffc6224c5893b753af76ed7f71e766",
+      "src": "section-6-6.mp3",
+      "start": 81.72,
+      "end": 106.248,
+      "duration": 24.528
+    },
+    {
+      "id": "section-8-8",
+      "section": "section-8",
+      "order": 5,
+      "label": "正確さと伝達",
+      "targets": [
+        7,
+        8
+      ],
+      "hash": "bcd171a524a10374bc33f07b5b8d43be818c7cc3a67f2b1736a16f2602625dce",
+      "src": "section-8-8.mp3",
+      "start": 106.248,
+      "end": 118.992,
+      "duration": 12.744
+    },
+    {
+      "id": "section-10-10",
+      "section": "section-10",
+      "order": 6,
+      "label": "妥当性・信頼性・形成的評価",
+      "targets": [
+        9,
+        10
+      ],
+      "hash": "88857a543834e20ec095535cde82b1ba099e178db2d5e12d26318de4ee72e3f7",
+      "src": "section-10-10.mp3",
+      "start": 118.992,
+      "end": 152.88,
+      "duration": 33.888
+    },
+    {
+      "id": "section-12-12",
+      "section": "section-12",
+      "order": 7,
+      "label": "評価の種類と活用",
+      "targets": [
+        11,
+        12
+      ],
+      "hash": "0ff079ad684d23bf9b86d673b0835867386ce14e393bf21d8826d1ee335a2fc3",
+      "src": "section-12-12.mp3",
+      "start": 152.88,
+      "end": 178.776,
+      "duration": 25.896
+    },
+    {
+      "id": "section-14-14",
+      "section": "section-14",
+      "order": 8,
+      "label": "評価の品質管理",
+      "targets": [
+        13,
+        14,
+        15
+      ],
+      "hash": "2cf4318cd158dcefb97b317e1c75fcf1c8cc36c85f4e374fa22d4c8212ec7d60",
+      "src": "section-14-14.mp3",
+      "start": 178.776,
+      "end": 233.52,
+      "duration": 54.744
+    }
+  ],
+  "duration": 233.52
+}

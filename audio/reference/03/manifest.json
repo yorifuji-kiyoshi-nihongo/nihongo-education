@@ -1,0 +1,149 @@
+{
+  "course": "reference",
+  "chapter": "03",
+  "sourceHash": "df3c67e73eedbf33f26d5b9f318c426909e333cc94cf633e8aebe343674b89ea",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "54406daed966d47325675cfe4c6e8b17807515e868ccf2b912a3f6b01ba9a10c",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 10.608,
+      "duration": 10.608
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "基礎段階 A1・A2",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "24dad496bb6060c906d5f230df8f747bdf946038110551e9c077c4a027b75db8",
+      "src": "section-1-1.mp3",
+      "start": 10.608,
+      "end": 26.736,
+      "duration": 16.128
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "自立段階 B1・B2",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "34b1d97e50fcd977bf43e3aa976d1f62599467b36113fac97470cc704abd4773",
+      "src": "section-3-3.mp3",
+      "start": 26.736,
+      "end": 44.16,
+      "duration": 17.424
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "熟達段階 C1・C2",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "c75b05850c14e3a09562c8dc42cc5707c87f609d507828473d69a9c48ad8e4d3",
+      "src": "section-5-5.mp3",
+      "start": 44.16,
+      "end": 63.816,
+      "duration": 19.656
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "一つのレベルでは表せない能力",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "08cdde3ac41a8f7ceea24529ee28dab65745a0d6bc26f758f8236b75bf9b92a7",
+      "src": "section-7-7.mp3",
+      "start": 63.816,
+      "end": 77.832,
+      "duration": 14.016
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "活動別プロフィール",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "554206a7d7d06d044b71dddecc0a6739b8cab5b76f3822e8788c4e8c7751dfa7",
+      "src": "section-9-9.mp3",
+      "start": 77.832,
+      "end": 109.416,
+      "duration": 31.584
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 7,
+      "label": "レベル判定の注意",
+      "targets": [
+        10,
+        11
+      ],
+      "hash": "fb9f5f4b27646434a178d5725870c033cac468441ad6fb5fcc0975198f8da710",
+      "src": "section-11-11.mp3",
+      "start": 109.416,
+      "end": 132.96,
+      "duration": 23.544
+    },
+    {
+      "id": "section-13-13",
+      "section": "section-13",
+      "order": 8,
+      "label": "六段階を比較する",
+      "targets": [
+        12,
+        13
+      ],
+      "hash": "372962d98f646cd1b0af2a89f2ec929be716dc27c2b9e4209926f3fc6114b8eb",
+      "src": "section-13-13.mp3",
+      "start": 132.96,
+      "end": 161.136,
+      "duration": 28.176
+    },
+    {
+      "id": "section-15-15",
+      "section": "section-15",
+      "order": 9,
+      "label": "活動別プロフィールの活用",
+      "targets": [
+        14,
+        15,
+        16
+      ],
+      "hash": "4d419b337045fb4350a56b5b479ae1942795601325941142ac4abbdd517b7634",
+      "src": "section-15-15.mp3",
+      "start": 161.136,
+      "end": 236.424,
+      "duration": 75.288
+    }
+  ],
+  "duration": 236.424
+}

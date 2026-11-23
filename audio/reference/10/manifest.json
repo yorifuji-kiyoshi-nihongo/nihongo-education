@@ -1,0 +1,89 @@
+{
+  "course": "reference",
+  "chapter": "10",
+  "sourceHash": "eb6aa3292dfa95e5e847326069c2f3bbd08d45abb1193f306bc949eadce0a667",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "d0b3ec8e842ea2f72e214b11ff8f1e7f3374762e04e9461db58bcea37923ee4f",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 9.624,
+      "duration": 9.624
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "履修・到達・公表を区別する",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "a55110d70259e6d506615f738f7bcb75fe3a6f423b89d612e07c790817207f81",
+      "src": "section-1-1.mp3",
+      "start": 9.624,
+      "end": 36.888,
+      "duration": 27.264
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "活動別の証拠から支援を組み立てる",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "d1f626f3f1283797e3dcbe25a5a1375ca3e9fb264723c9ac166b7d54984477cf",
+      "src": "section-3-3.mp3",
+      "start": 36.888,
+      "end": 71.424,
+      "duration": 34.536
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "遂行と伝達の質を観点別に評価する",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "6c821fdea9a5448edbeb910f2dc5cec9e2007358b24a52ee29fb49d29c67e331",
+      "src": "section-5-5.mp3",
+      "start": 71.424,
+      "end": 104.232,
+      "duration": 32.808
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "課程と評価の改善を検証する",
+      "targets": [
+        6,
+        7,
+        8
+      ],
+      "hash": "404af2c1d069c58c5f3e4bbeec386f54e2cd9aaf1f09190f9fec83049ca7cc2e",
+      "src": "section-7-7.mp3",
+      "start": 104.232,
+      "end": 136.368,
+      "duration": 32.136
+    }
+  ],
+  "duration": 136.368
+}

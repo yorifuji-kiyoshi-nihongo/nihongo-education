@@ -1,0 +1,149 @@
+{
+  "course": "reference",
+  "chapter": "05",
+  "sourceHash": "f1da936fbd40bbbfd1a31dbbf30cbc20768c291a56637742716f19e972322396",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "168d82a4fbe3bcd62b6bd2863245db2c0706fead4e496fa56e6f872176d3c5ff",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 8.208,
+      "duration": 8.208
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "記述文の役割",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "2d9aafb296fbb64395f0b8bed6cc78a02d2a6d536c278f15244101704ceac41f",
+      "src": "section-1-1.mp3",
+      "start": 8.208,
+      "end": 24.384,
+      "duration": 16.176
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "目標の具体化",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "37eac48a0da3336c10fecfc3d8db329d3157474251f4829195071548ce1b3fed",
+      "src": "section-3-3.mp3",
+      "start": 24.384,
+      "end": 45.648,
+      "duration": 21.264
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "目標の階層",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "35ed9b01c0a5449b0ce31c4796d2b335cd4684a3dd3b7927d22c9fdda800854e",
+      "src": "section-5-5.mp3",
+      "start": 45.648,
+      "end": 65.712,
+      "duration": 20.064
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "Can-doの具体化",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "5529eefe5872d3436c49a3e0dc41174c81cf98656f18f82562d95c02f6352d23",
+      "src": "section-7-7.mp3",
+      "start": 65.712,
+      "end": 93.36,
+      "duration": 27.648
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "能力記述文と授業目標",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "75238e32b1ca3c6041e06728f4549c8fe3a5a9d94dd01ef62692365a79b69e37",
+      "src": "section-9-9.mp3",
+      "start": 93.36,
+      "end": 121.536,
+      "duration": 28.176
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 7,
+      "label": "評価可能な記述",
+      "targets": [
+        10,
+        11
+      ],
+      "hash": "ce03ffd6b4327329303e7094bc811c51ce4e4dcfa2613443ef80f739dac5639a",
+      "src": "section-11-11.mp3",
+      "start": 121.536,
+      "end": 145.632,
+      "duration": 24.096
+    },
+    {
+      "id": "section-13-13",
+      "section": "section-13",
+      "order": 8,
+      "label": "場面を変えるときの難度",
+      "targets": [
+        12,
+        13
+      ],
+      "hash": "1d969ab6bde8e6c650a48582e03af69bcdb1beb1cbc218a6a1b3d2fd100e5e06",
+      "src": "section-13-13.mp3",
+      "start": 145.632,
+      "end": 170.256,
+      "duration": 24.624
+    },
+    {
+      "id": "section-15-15",
+      "section": "section-15",
+      "order": 9,
+      "label": "Can-doから評価課題を作る例",
+      "targets": [
+        14,
+        15,
+        16
+      ],
+      "hash": "6b32df88e5f98538e405ad4e7fcd65a3f63bbb4508a997f76d112fda97fdb3da",
+      "src": "section-15-15.mp3",
+      "start": 170.256,
+      "end": 225.48,
+      "duration": 55.224
+    }
+  ],
+  "duration": 225.48
+}

@@ -1,0 +1,134 @@
+{
+  "course": "reference",
+  "chapter": "09",
+  "sourceHash": "25b1820a74c4e56453c821f4337ea57d919e3a26482ecf77ff73679cc776e06c",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "03031a5667d3dd655acf29b4fc069b7a872030e1d9c82650d93f06638fd5e028",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 9.864,
+      "duration": 9.864
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "事例1：試験偏重",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "66186387e0640b4bb8af2fc36319ae4a1531b6120c0e4cf740b7742117faeec7",
+      "src": "section-1-1.mp3",
+      "start": 9.864,
+      "end": 30.768,
+      "duration": 20.904
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "事例2：評価の不一致",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "52956ebb18ac81015f55c42813300f79063ef8628be21142ea261d7858b59fff",
+      "src": "section-3-3.mp3",
+      "start": 30.768,
+      "end": 47.904,
+      "duration": 17.136
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "事例3：IT日本語",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "9046d4ef9f866d02e2ed6b65864be13829bcc4bc30983d4ef08ed28da51da3c1",
+      "src": "section-5-5.mp3",
+      "start": 47.904,
+      "end": 68.328,
+      "duration": 20.424
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "改善の効果検証",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "71d1f128d30f2a45be5d3b13e1d1dac97653e965aceb527fcc8b86f0f2c28572",
+      "src": "section-7-7.mp3",
+      "start": 68.328,
+      "end": 92.184,
+      "duration": 23.856
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "原因分析と改善",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "fff18af0e520d0debe6bea9e2b2b4710c6c2d30754208ccadee3ceb0a9a2f515",
+      "src": "section-9-9.mp3",
+      "start": 92.184,
+      "end": 118.488,
+      "duration": 26.304
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 7,
+      "label": "ツール利用と評価",
+      "targets": [
+        10,
+        11
+      ],
+      "hash": "cb0e3cad90bddc26cbadcf723c8144ee53f3c8d45a79cb346d8e32ab79af93f3",
+      "src": "section-11-11.mp3",
+      "start": 118.488,
+      "end": 145.392,
+      "duration": 26.904
+    },
+    {
+      "id": "section-13-13",
+      "section": "section-13",
+      "order": 8,
+      "label": "比較できる証拠がない場合",
+      "targets": [
+        12,
+        13,
+        14
+      ],
+      "hash": "68cc94dfd9f4adba2382a4328954dcae11db90e4cb87db220146d0211182f022",
+      "src": "section-13-13.mp3",
+      "start": 145.392,
+      "end": 203.256,
+      "duration": 57.864
+    }
+  ],
+  "duration": 203.256
+}

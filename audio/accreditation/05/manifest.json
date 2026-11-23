@@ -1,0 +1,121 @@
+{
+  "course": "accreditation",
+  "chapter": "05",
+  "sourceHash": "170edd71c3ea7a253491eec146a15ece4c418cae1b39f749a4eec3ce1c2563f0",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "78618049a3c5809ac756f0aef1818d1468aa2e200ae6a26dd37ba4f85c6d2de7",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 10.656,
+      "duration": 10.656
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "品質保証の循環",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "f124b976029bbb617951459f708dfa7a448360a1cfdbbdce4b2c3a16a1bf15c6",
+      "src": "section-1-1.mp3",
+      "start": 10.656,
+      "end": 30.84,
+      "duration": 20.184
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "特に重要な管理領域",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "30bc7156a1ea0b2af138f34e477785de0c86006acda3ac2bafa7c4b2e69baa33",
+      "src": "section-3-3.mp3",
+      "start": 30.84,
+      "end": 58.608,
+      "duration": 27.768
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "学校の自己点検・評価",
+      "targets": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "hash": "4117efebecf7ce5c9e050c33b399bd4693530f343a20af51b340c190d8e6ba6f",
+      "src": "section-5-5.mp3",
+      "start": 58.608,
+      "end": 131.616,
+      "duration": 73.008
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 5,
+      "label": "公開情報を読む演習",
+      "targets": [
+        8,
+        9
+      ],
+      "hash": "4c3045c0fe9301fb5adf6a6847595c2914d4781311347592a5a758966b44eb33",
+      "src": "section-9-9.mp3",
+      "start": 131.616,
+      "end": 148.224,
+      "duration": 16.608
+    },
+    {
+      "id": "section-11-11",
+      "section": "section-11",
+      "order": 6,
+      "label": "出席記録から支援につなげる",
+      "targets": [
+        10,
+        11
+      ],
+      "hash": "fab0e36b8cfab55401beb96c7c5c486dc4241c32fb188a69ef26968c1e2e63b6",
+      "src": "section-11-11.mp3",
+      "start": 148.224,
+      "end": 175.368,
+      "duration": 27.144
+    },
+    {
+      "id": "section-13-13",
+      "section": "section-13",
+      "order": 7,
+      "label": "自己点検・公表・定期報告",
+      "targets": [
+        12,
+        13,
+        14
+      ],
+      "hash": "0131272a67876badf169e41bbe2f9880ae42ecab69235facc3cf7b471b47b5f6",
+      "src": "section-13-13.mp3",
+      "start": 175.368,
+      "end": 240.216,
+      "duration": 64.848
+    }
+  ],
+  "duration": 240.216
+}

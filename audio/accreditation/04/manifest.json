@@ -1,0 +1,123 @@
+{
+  "course": "accreditation",
+  "chapter": "04",
+  "sourceHash": "73699b6c2cc5994e9cc360bc24d9c4257c3a7cf08e85aff2b536efb93abd505b",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "35f8808977747de705bcc4dee61027c692da00116a43aac104bab8dab4b390c7",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 11.328,
+      "duration": 11.328
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "主な役割",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "9e7a4579a8be867e2cb74fa9733e942887ad85c89b0440f69f21cccf5db3e682",
+      "src": "section-1-1.mp3",
+      "start": 11.328,
+      "end": 48.696,
+      "duration": 37.368
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "「教務主任」と「主任教員」",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "9b9ede1d0fb0323df4f1c2268de22fd42312de31cd4ee7a5d128cd54db3aa706",
+      "src": "section-3-3.mp3",
+      "start": 48.696,
+      "end": 69.12,
+      "duration": 20.424
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "主任教員に求められる実務",
+      "targets": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "hash": "aa975c8bd4f7986c0535f1820143a86f9a153c16f2eafe28d1b6b0ceccc047b2",
+      "src": "section-5-5.mp3",
+      "start": 69.12,
+      "end": 113.736,
+      "duration": 44.616
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 5,
+      "label": "候補者の要件と職務を照合する",
+      "targets": [
+        8,
+        9,
+        10
+      ],
+      "hash": "cda9b4cd49e4978aabb94c0f0b14bab933f3e7d7976ed34ecf7f1af8197ee5d6",
+      "src": "section-9-9.mp3",
+      "start": 113.736,
+      "end": 161.472,
+      "duration": 47.736
+    },
+    {
+      "id": "section-12-12",
+      "section": "section-12",
+      "order": 6,
+      "label": "主任教員の配置要件と経過措置",
+      "targets": [
+        11,
+        12,
+        13
+      ],
+      "hash": "a6368089f808efb0f3d1d716cbec9d92636e36680dad50705056678f87f27c90",
+      "src": "section-12-12.mp3",
+      "start": 161.472,
+      "end": 265.92,
+      "duration": 104.448
+    },
+    {
+      "id": "section-15-15",
+      "section": "section-15",
+      "order": 7,
+      "label": "採点基準をそろえる手順",
+      "targets": [
+        14,
+        15,
+        16
+      ],
+      "hash": "05c6eb2c0aa0e3f08d89560aeeba4f504bcd7f4bd9bebd8f5c80bb5f9a88d0e5",
+      "src": "section-15-15.mp3",
+      "start": 265.92,
+      "end": 358.608,
+      "duration": 92.688
+    }
+  ],
+  "duration": 358.608
+}

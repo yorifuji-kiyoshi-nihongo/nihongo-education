@@ -1,0 +1,92 @@
+{
+  "course": "accreditation",
+  "chapter": "01",
+  "sourceHash": "e625d4f47c5c6db3c4651f501fb13a5fae2fbb41c6d833207cad764294b0eebf",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "9ace7930b90d582cf9d0adcd50e34670f1801dc04409d34cf7d583c1231facf0",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 9.408,
+      "duration": 9.408
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "なぜ新制度ができたのか",
+      "targets": [
+        0,
+        1,
+        2
+      ],
+      "hash": "aca0e217b09558d05f18302d0adf72504995ef300f964f7bd82f5b82fad0dc23",
+      "src": "section-1-1.mp3",
+      "start": 9.408,
+      "end": 54.984,
+      "duration": 45.576
+    },
+    {
+      "id": "section-4-4",
+      "section": "section-4",
+      "order": 3,
+      "label": "「認定」と「法務省告示」は同じではない",
+      "targets": [
+        3,
+        4,
+        5
+      ],
+      "hash": "a9cc6eabd83412c11e64b76ed0261a03292da92ebb45047d06d3ffd8270ef3cb",
+      "src": "section-4-4.mp3",
+      "start": 54.984,
+      "end": 90.288,
+      "duration": 35.304
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 4,
+      "label": "実務で考える",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "60106b9ebed8dc6826f6ef2b690a9b5aee1d568afda0fbb877c3e126ec67f5e0",
+      "src": "section-7-7.mp3",
+      "start": 90.288,
+      "end": 103.032,
+      "duration": 12.744
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 5,
+      "label": "認定情報を課程ごとに読む",
+      "targets": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "hash": "f59474b1767129f96adf89992fe8a620be3d318e852f3568b6102ee788e93885",
+      "src": "section-9-9.mp3",
+      "start": 103.032,
+      "end": 185.88,
+      "duration": 82.848
+    }
+  ],
+  "duration": 185.88
+}

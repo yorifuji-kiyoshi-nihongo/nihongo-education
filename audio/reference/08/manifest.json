@@ -1,0 +1,135 @@
+{
+  "course": "reference",
+  "chapter": "08",
+  "sourceHash": "c531c62e412b1a8cbfbfda975b97c174d2501ab8b493792fe2062a782e27f9e0",
+  "voice": {
+    "languageCode": "ja-JP",
+    "name": "ja-JP-Chirp3-HD-Aoede"
+  },
+  "audioConfig": {
+    "audioEncoding": "MP3"
+  },
+  "src": "chapter.mp3",
+  "units": [
+    {
+      "id": "overview",
+      "section": "overview",
+      "order": 1,
+      "label": "導入・学習目標",
+      "targets": [],
+      "hash": "d86dda415f247acf2666d70846f1f43ad13a4d159c9abfac5cc6f61e13f530b9",
+      "src": "overview.mp3",
+      "start": 0.0,
+      "end": 11.664,
+      "duration": 11.664
+    },
+    {
+      "id": "section-1-1",
+      "section": "section-1",
+      "order": 2,
+      "label": "制度との接続",
+      "targets": [
+        0,
+        1
+      ],
+      "hash": "31b46e40bf478048af986a7147e235f723c438686e33dc6a2ef26da170bb8b8b",
+      "src": "section-1-1.mp3",
+      "start": 11.664,
+      "end": 33.672,
+      "duration": 22.008
+    },
+    {
+      "id": "section-3-3",
+      "section": "section-3",
+      "order": 3,
+      "label": "三分野",
+      "targets": [
+        2,
+        3
+      ],
+      "hash": "32cc682b8829f2b10e63cc31cc925bb707e7fdee7980f269573c709535d78020",
+      "src": "section-3-3.mp3",
+      "start": 33.672,
+      "end": 52.728,
+      "duration": 19.056
+    },
+    {
+      "id": "section-5-5",
+      "section": "section-5",
+      "order": 4,
+      "label": "教務主任の点検",
+      "targets": [
+        4,
+        5
+      ],
+      "hash": "fbd29762773a311dd5ea44d279dad1a7d95c45e2f3c343cedf0724dae0ce43fa",
+      "src": "section-5-5.mp3",
+      "start": 52.728,
+      "end": 76.656,
+      "duration": 23.928
+    },
+    {
+      "id": "section-7-7",
+      "section": "section-7",
+      "order": 5,
+      "label": "主任教員の実務",
+      "targets": [
+        6,
+        7
+      ],
+      "hash": "481dbd51acbe2557f7d5688903934405974429d4aed2e484fd66c141cc521ae4",
+      "src": "section-7-7.mp3",
+      "start": 76.656,
+      "end": 100.992,
+      "duration": 24.336
+    },
+    {
+      "id": "section-9-9",
+      "section": "section-9",
+      "order": 6,
+      "label": "分野別の具体化",
+      "targets": [
+        8,
+        9,
+        10
+      ],
+      "hash": "4697187d629b3855f764836d27624bc6323de79c92e65880d00f8e946f1c0077",
+      "src": "section-9-9.mp3",
+      "start": 100.992,
+      "end": 159.888,
+      "duration": 58.896
+    },
+    {
+      "id": "section-12-12",
+      "section": "section-12",
+      "order": 7,
+      "label": "主任教員の確認事項",
+      "targets": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "hash": "356071ca8aaef9e632d31c541920682d2b4bca5def321ed849672d965e3cf6aa",
+      "src": "section-12-12.mp3",
+      "start": 159.888,
+      "end": 221.976,
+      "duration": 62.088
+    },
+    {
+      "id": "section-12-16",
+      "section": "section-12",
+      "order": 8,
+      "label": "主任教員の確認事項（続き）",
+      "targets": [
+        15
+      ],
+      "hash": "c4ab0d0afbda068082e547cc6552b963575c3e8f26025f16c398f7f12345464b",
+      "src": "section-12-16.mp3",
+      "start": 221.976,
+      "end": 258.624,
+      "duration": 36.648
+    }
+  ],
+  "duration": 258.624
+}
