@@ -5,6 +5,7 @@ import argparse
 import base64
 import fcntl
 import hashlib
+from http.client import HTTPException
 import json
 import math
 import os
@@ -16,7 +17,7 @@ import sys
 import tempfile
 import time
 from datetime import datetime
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 from zipfile import ZipFile, ZIP_DEFLATED
 from zoneinfo import ZoneInfo
@@ -120,6 +121,63 @@ def totals(ledger, month):
     return sum(x["chars"] for x in ledger["charges"] if x["month"] == month)
 
 
+def safe_error_text(value, token):
+    if not isinstance(value, str):
+        return None
+    value = value.replace(token, "[伏字]")
+    # Free text may echo credentials or signed URLs even without a structured field.
+    if re.search(
+        r"(?i)authorization|bearer|credentials?|tokens?|api[ _-]?keys?|password|secret|cookie"
+        r"|private[ _-]?key|ya29\.|AIza|https?://"
+        r"|[a-z0-9_+/=-]{24,}|[\w.+-]+@[\w.-]+",
+        value,
+    ):
+        return "[機密情報を含む可能性があるため省略]"
+    return " ".join("".join(c if c.isprintable() else " " for c in value).split())[:512]
+
+
+def google_error_diagnostics(error, token):
+    diagnostic = {"httpStatus": error.code}
+    try:
+        with error:
+            body = error.read(32769)
+        if len(body) > 32768:
+            return {**diagnostic, "body": "too_large"}
+        data = json.loads(body)["error"]
+        if not isinstance(data, dict):
+            raise ValueError("Unexpected error envelope")
+    except (ValueError, LookupError, TypeError, OSError, HTTPException, AttributeError, RecursionError):
+        return {**diagnostic, "body": "unavailable_or_invalid"}
+    status = data.get("status")
+    if isinstance(status, str) and re.fullmatch(r"[A-Z][A-Z_]{0,47}", status) and token not in status:
+        diagnostic["status"] = status
+    message = safe_error_text(data.get("message"), token)
+    if message:
+        diagnostic["message"] = message
+    details = []
+    raw_details = data.get("details")
+    for detail in raw_details[:8] if isinstance(raw_details, list) else ():
+        if not isinstance(detail, dict):
+            continue
+        kind = detail.get("@type")
+        if kind == "type.googleapis.com/google.rpc.BadRequest":
+            violations = detail.get("fieldViolations")
+            details.append({"type": "BadRequest", "fieldViolations": [
+                {key: safe_error_text(item[key], token) for key in ("field", "description")
+                 if isinstance(item.get(key), str)}
+                for item in (violations[:8] if isinstance(violations, list) else ())
+                if isinstance(item, dict)
+            ]})
+        elif kind == "type.googleapis.com/google.rpc.ErrorInfo":
+            details.append({"type": "ErrorInfo", **{
+                key: safe_error_text(detail[key], token) for key in ("reason", "domain")
+                if isinstance(detail.get(key), str)
+            }})
+    if details:
+        diagnostic["details"] = details
+    return diagnostic
+
+
 def synthesize(unit, path, ledger_path, ledger, month, existing_usage, initial_reserved):
     for attempt in range(ATTEMPTS):
         if timestamp().strftime("%Y-%m") != month:
@@ -140,9 +198,12 @@ def synthesize(unit, path, ledger_path, ledger, month, existing_usage, initial_r
                       canonical(unit["payload"]),
                       {"Authorization": f"Bearer {token}", "x-goog-user-project": PROJECT,
                        "Content-Type": "application/json"})
+        phase = "network"
         try:
             with urlopen(req, timeout=60) as response:
-                data = base64.b64decode(json.load(response)["audioContent"], validate=True)
+                body = response.read()
+            phase = "audio"
+            data = base64.b64decode(json.loads(body)["audioContent"], validate=True)
             with tempfile.TemporaryDirectory(dir=path.parent) as temp:
                 audio = Path(temp) / "clip.mp3"
                 audio.write_bytes(data)
@@ -150,16 +211,25 @@ def synthesize(unit, path, ledger_path, ledger, month, existing_usage, initial_r
                 commit_file(path, data)
         except HTTPError as error:
             entry.update(status="retryable" if error.code in (429, 503) else "uncertain",
-                         error=f"HTTP {error.code}")
+                         error=f"HTTP {error.code}", errorKind="http",
+                         inputBytes=len(unit["payload"]["input"]["text"].encode("utf-8")),
+                         apiError=google_error_diagnostics(error, token))
             save_ledger(ledger_path, ledger)
             if error.code in (429, 503) and attempt + 1 < ATTEMPTS:
                 time.sleep(2 ** (attempt + 1))
                 continue
             raise RuntimeError(f"{unit['id']}: HTTP {error.code}。生成を停止しました。") from None
         except Exception as error:
-            entry.update(status="uncertain", error=type(error).__name__)
+            reason = error.reason if isinstance(error, URLError) else error
+            if phase == "network" and isinstance(reason, TimeoutError):
+                kind, message = "timeout", "API通信がタイムアウトしました。"
+            elif phase == "network" and isinstance(error, (OSError, HTTPException)):
+                kind, message = "transport", "APIとの通信が切断されたか失敗しました。"
+            else:
+                kind, message = "audio", "応答またはMP3の検証に失敗しました。"
+            entry.update(status="uncertain", error=type(reason).__name__, errorKind=kind)
             save_ledger(ledger_path, ledger)
-            raise RuntimeError(f"{unit['id']}: 応答またはMP3の検証に失敗しました。") from None
+            raise RuntimeError(f"{unit['id']}: {message}") from None
         entry["status"] = "ok"
         save_ledger(ledger_path, ledger)
         return
